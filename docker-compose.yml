@@ -1,0 +1,45 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - writable_uploads:/var/www/html/writable/uploads
+    depends_on:
+      - db
+    environment:
+      - CI_ENVIRONMENT=development
+      - DB_HOST=db
+      - DB_USER=ci4user
+      - DB_PASSWORD=ci4password
+      - DB_NAME=ci4_task_api
+      - DB_PORT=3306
+
+  db:
+    platform: linux/amd64
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=ci4_task_api
+      - MYSQL_USER=ci4user
+      - MYSQL_PASSWORD=ci4password
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    platform: linux/amd64
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=db
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
+  writable_uploads:

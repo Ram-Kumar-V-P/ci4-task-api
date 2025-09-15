@@ -1,0 +1,32 @@
+{
+    "name": "vayuz/ci4-task-api",
+    "description": "Task Management REST API (CodeIgniter 4, JWT, MySQL)",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "codeigniter4/framework": "^4.4",
+        "firebase/php-jwt": "^6.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/response_helper.php"
+        ]
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "@composer dump-autoload"
+        ],
+        "serve": [
+            "php spark serve"
+        ],
+        "migrate": [
+            "php spark migrate"
+        ],
+        "seed": [
+            "php spark db:seed DevSeeder"
+        ]
+    }
+}

@@ -1,0 +1,50 @@
+# CodeIgniter 4 specific
+writable/cache/*
+!writable/cache/index.html
+writable/logs/*
+!writable/logs/index.html
+writable/session/*
+!writable/session/index.html
+writable/uploads/*
+!writable/uploads/index.html
+writable/debugbar/*
+!writable/debugbar/.gitkeep
+
+# PHP Storm
+.idea/*
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Environment files
+.env
+.env.backup
+.env.*
+!.env.example
+
+# Composer
+vendor/
+composer.phar
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.log
+*.sqlite
+*.sqlite3
+
+# Test coverage
+phpunit.xml
+coverage.xml
+/coverage/
+.phpunit.result.cache
+
+# Node modules (if using any JavaScript tools)
+node_modules/
+package-lock.json
